@@ -29,7 +29,9 @@ def parse_input(file_location):
 
         for i in range(L):
             N[i],T[i],M[i] = list(map(int,f.readline().strip().split(' ')))
-            LB[i] =  np.array(list(set(map(int,f.readline().strip().split(' ')))))
+            l_id = list(set(map(int,f.readline().strip().split(' '))))
+            l_new = sorted([(_id, BS[_id]) for _id in l_id], key=lambda x: x[1], reverse=True)
+            LB[i] = [i[0] for i in l_new]
 
         return B,L,D,N,T,M,BS,LB
 
@@ -49,4 +51,3 @@ if __name__ == '__main__':
 
     print(LB)
     print(BS)
-    print(library_score(LB, BS))
