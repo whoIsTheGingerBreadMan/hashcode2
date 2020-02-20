@@ -33,9 +33,7 @@ def parse_input(file_location):
 
         return B,L,D,N,T,M,BS,LB
 
-def library_score(lb, bs):
-    for lib in lb:
-        print(lib, sum(bs[i] for i in lb[lib]))
+
 
 
 if __name__ == '__main__':
