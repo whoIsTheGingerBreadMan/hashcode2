@@ -18,18 +18,30 @@ def parse_input(file_location):
         B,L,D = list(map(int,f.readline().strip().split(' ')))
         S = list(map(int,f.readline().strip().split(' ')))
 
-        N = np.zeros(len(L))  #number of books in library
-        T = np.zeros(len(L)) #days to sign up
-        M = np.zeros(len(L)) # number of books that we can ship per day
-        BS = dict.fromkeys(range(B),S) #book score
+        N = np.zeros(L).astype(int)  #number of books in library
+        T = np.zeros(L).astype(int) #days to sign up
+        M = np.zeros(L).astype(int) # number of books that we can ship per day
+        BS = dict.fromkeys(range(B)) #book score
         LB = dict.fromkeys(range(L))
 
         for i in range(L):
             N[i],T[i],M[i] = list(map(int,f.readline().strip().split(' ')))
-            LB[i] =  np.array(map(int,f.readline().strip().split(' ')))
+            LB[i] =  np.array(list(set(map(int,f.readline().strip().split(' ')))))
 
         return B,L,D,N,T,M,BS,LB
 
 
+if __name__ == '__main__':
+    B,L,D,N,T,M,BS,LB = parse_input('data/a_example.txt')
+    print(
+    "Number of books", B, '\n',
+    "number of libraries", L, '\n',
+    "Total number of Days", D, '\n')
 
+    for library, n, t, m in zip(range(L), N, T, M):
+        print("Library", library, ", Number of books", n,
+              ", Days to sign up", t, ", Books library can ship per day", m)
 
+    print(LB)
+
+    print(BS)
