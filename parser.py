@@ -33,6 +33,10 @@ def parse_input(file_location):
 
         return B,L,D,N,T,M,BS,LB
 
+def library_score(lb, bs):
+    for lib in lb:
+        print(lib, sum(bs[i] for i in lb[lib]))
+
 
 if __name__ == '__main__':
     B,L,D,N,T,M,BS,LB = parse_input('data/a_example.txt')
@@ -46,5 +50,5 @@ if __name__ == '__main__':
               ", Days to sign up", t, ", Books library can ship per day", m)
 
     print(LB)
-
     print(BS)
+    print(library_score(LB, BS))
