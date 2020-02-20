@@ -22,6 +22,9 @@ def parse_input(file_location):
         T = np.zeros(L).astype(int) #days to sign up
         M = np.zeros(L).astype(int) # number of books that we can ship per day
         BS = dict.fromkeys(range(B)) #book score
+        for i,book in enumerate(BS):
+            BS[book] = S[i]
+
         LB = dict.fromkeys(range(L))
 
         for i in range(L):
