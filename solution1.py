@@ -6,6 +6,9 @@ def main(input_file):
     LBS = library_score(LB,BS)
     print('blah')
 
+def random(input_file):
+    
+
 
 if __name__ == '__main__':
     main('data/a_example.txt')

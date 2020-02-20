@@ -34,6 +34,27 @@ def parse_input(file_location):
         return B,L,D,N,T,M,BS,LB
 
 
+def parse_output(output,out_loc='solution.out'):
+    """
+    Takes in a list of dictionaries and makes a file out of them.
+    [{lib_number:int,num_books:int,list_books:list},...]
+
+    :param output:
+    :return:
+    """
+    with open(out_loc,'w') as f:
+        num_libraries = len(output)
+        f.write(str(num_libraries))
+        f.write('\n')
+        for lib in output:
+            l = f"{lib['lib_number']} {lib['num_books']}"
+            f.write(l)
+            f.write('\n')
+            l = " ".join(map(str,lib['list_books']))
+            f.write(l)
+            f.write('\n')
+
+
 
 
 if __name__ == '__main__':
@@ -49,4 +70,6 @@ if __name__ == '__main__':
 
     print(LB)
     print(BS)
-    print(library_score(LB, BS))
+    example_output = [{'lib_number':1,'num_books':3,'list_books':[5,2,3]},{'lib_number':0,'num_books':5,'list_books':[0,1,2,3,4]}]
+    parse_output(example_output)
+
